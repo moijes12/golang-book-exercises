@@ -23,7 +23,7 @@ func main() {
     		os.Exit(1)
     	}
     	fmt.Printf("HTTP Status Code of response : %v\n", resp.Status)
-    	io.Copy(os.Stdout, resp.Body)
+    	_, err = io.Copy(os.Stdout, resp.Body)
     	resp.Body.Close()
     	if err != nil {
     		fmt.Fprintf(os.Stderr, "fetch: reading %s: %v\n", url, err)
